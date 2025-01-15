@@ -2,7 +2,7 @@ from datetime import datetime
 import os
 
 # File to update
-file_path = "daily_log.txt"
+file_path = "requirements.txt"
 
 # Number of commits to make
 commits_per_day = 10

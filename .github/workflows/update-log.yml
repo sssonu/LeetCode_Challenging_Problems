@@ -28,6 +28,4 @@ jobs:
       run: |
         git config --global user.name "sssonu"
         git config --global user.email "sonu23645@gmail.com"
-        git add daily_log.txt
-        git commit -m "Automated update: $(date -u +"%Y-%m-%d %H:%M:%S")"
         git push

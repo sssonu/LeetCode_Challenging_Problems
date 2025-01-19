@@ -5,7 +5,7 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 permissions:
-  contents: write
+  contents: write # Grants permission to push changes
 
 jobs:
   update-log:
@@ -25,9 +25,11 @@ jobs:
         python update_log.py
 
     - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "sssonu"
         git config --global user.email "sonu23645@gmail.com"
         git add daily_log.txt
-        git commit -m "Automated update: $(date -u +"%Y-%m-%d %H:%M:%S")"
+        git commit -m "Automated update: $(date -u +"%Y-%m-%d %H:%M:%S")" || echo "No changes to commit"
         git push

@@ -20,17 +20,17 @@
 //	1 <= nums.length <= 100
 //	1 <= nums[i] <= 100
 class Solution {
-    public int maxAscendingSum(int[] nums) {
-        int maxSum = nums[0];
-        int currentSum = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > nums[i - 1]) {
-                currentSum += nums[i];
-            } else {
-                maxSum = Math.max(maxSum, currentSum);
-                currentSum = nums[i];
+    public int maxAscendingSum(int[] arr) {
+        int currentsum=arr[0];
+        int maxsum=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]>arr[i-1]){
+                currentsum+=arr[i];
+            }else{
+                currentsum=arr[i];
             }
+            maxsum=(int)Math.max(currentsum,maxsum);
         }
-        return Math.max(maxSum, currentSum);        
+        return maxsum;
     }
 }

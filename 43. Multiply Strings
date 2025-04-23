@@ -1,0 +1,98 @@
+Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+
+Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
+
+ 
+
+Example 1:
+
+Input: num1 = "2", num2 = "3"
+Output: "6"
+Example 2:
+
+Input: num1 = "123", num2 = "456"
+Output: "56088"
+ 
+
+Constraints:
+
+1 <= num1.length, num2.length <= 200
+num1 and num2 consist of digits only.
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+
+
+#### JAVA CODE ---->>>
+
+#### Method 1---->>>
+
+import java.math.BigInteger;
+
+class Solution {
+    public static BigInteger strtoint(String number) {
+        BigInteger total = BigInteger.ZERO;
+        for (int i = 0; i < number.length(); i++) {
+            int power = number.length() - 1 - i;
+            BigInteger p1 = BigInteger.TEN.pow(power);
+            char c = number.charAt(i);
+            if (c == '1') {
+                total = total.add(BigInteger.ONE.multiply(p1));
+            }
+            if (c == '2') {
+                total = total.add(BigInteger.valueOf(2).multiply(p1));
+            }
+            if (c == '3') {
+                total = total.add(BigInteger.valueOf(3).multiply(p1));
+            }
+            if (c == '4') {
+                total = total.add(BigInteger.valueOf(4).multiply(p1));
+            }
+            if (c == '5') {
+                total = total.add(BigInteger.valueOf(5).multiply(p1));
+            }
+            if (c == '6') {
+                total = total.add(BigInteger.valueOf(6).multiply(p1));
+            }
+            if (c == '7') {
+                total = total.add(BigInteger.valueOf(7).multiply(p1));
+            }
+            if (c == '8') {
+                total = total.add(BigInteger.valueOf(8).multiply(p1));
+            }
+            if (c == '9') {
+                total = total.add(BigInteger.valueOf(9).multiply(p1));
+            }
+            if (c == '0') {
+                total = total.add(BigInteger.ZERO.multiply(p1));
+            }
+        }
+        return total;
+    }
+
+    public String multiply(String num1, String num2) {
+        return strtoint(num1).multiply(strtoint(num2)).toString();
+    }
+}
+
+#### METHOD 2---->>>>
+import java.math.BigInteger;
+class Solution {
+    
+    // Convert a string number (like "123") to a BigInteger
+    public static BigInteger strtoint(String number) {
+        BigInteger total = BigInteger.ZERO;
+        for (int i = 0; i < number.length(); i++) {
+            int power = number.length() - 1 - i;
+            BigInteger p1 = BigInteger.TEN.pow(power);
+            char c = number.charAt(i);
+            int digit = c - '0'; // convert char digit to int
+            total = total.add(BigInteger.valueOf(digit).multiply(p1));
+        }
+        return total;
+    }
+
+    // Multiply two string numbers
+    public String multiply(String num1, String num2) {
+        BigInteger product = strtoint(num1).multiply(strtoint(num2));
+        return product.toString();
+    }
+}
